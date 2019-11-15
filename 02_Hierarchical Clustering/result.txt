@@ -1,0 +1,10 @@
+
+Call:
+hclust(d = dist(new_HC_X(), method = input$dist_method), method = input$hclust_method)
+
+Cluster method   : complete 
+Distance         : binary 
+Number of objects: 46 
+
+[1] "clusting vector:"
+ [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2

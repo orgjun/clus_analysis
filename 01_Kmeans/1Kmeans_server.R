@@ -10,8 +10,7 @@ KM_X<-reactive({
       inFile$datapath,
       header = T)
   }
-  if(input$KM_scale){
-    datatb<-data.frame(scale(datatb))}
+
   return(datatb)
 })
 
@@ -34,6 +33,8 @@ output$clu_vari_out = renderUI({
 #new Database
 new_KM_X<-reactive({
   new_inFile<-KM_X()
+  if(input$KM_scale){
+    new_inFile<-data.frame(scale(new_inFile))}
   if(is.null(input$clu_vari)){
     return(new_inFile)
   }else{

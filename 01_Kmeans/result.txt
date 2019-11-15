@@ -1,17 +1,19 @@
-K-means clustering with 1 clusters of sizes 150
+K-means clustering with 3 clusters of sizes 50, 47, 53
 
 Cluster means:
-   Sepal.Length  Sepal.Width Petal.Length   Petal.Width
-1 -9.793092e-16 4.503805e-16 5.107026e-17 -6.217249e-17
+  Sepal.Length Sepal.Width
+1     5.006000    3.428000
+2     6.812766    3.074468
+3     5.773585    2.692453
 
 Clustering vector:
-  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
- [56] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-[111] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 3 2
+ [56] 3 2 3 2 3 3 3 3 3 3 2 3 3 3 3 3 3 3 3 2 2 2 2 3 3 3 3 3 3 3 3 2 3 3 3 3 3 3 3 3 3 3 3 3 3 2 3 2 2 2 2 3 2 2 2
+[111] 2 2 2 3 3 2 2 2 2 3 2 3 2 3 2 2 3 3 2 2 2 2 2 3 3 2 2 2 3 2 2 2 3 2 2 2 3 2 2 3
 
 Within cluster sum of squares by cluster:
-[1] 596
- (between_SS / total_SS =   0.0 %)
+[1] 13.1290 12.6217 11.3000
+ (between_SS / total_SS =  71.6 %)
 
 Available components:
 
