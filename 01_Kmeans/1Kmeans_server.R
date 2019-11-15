@@ -9,18 +9,20 @@ KM_X<-reactive({
     datatb <- read.csv(
       inFile$datapath,
       header = T)
-    return(datatb)
   }
+  if(input$KM_scale){
+    datatb<-data.frame(scale(datatb))}
+  return(datatb)
 })
 
 
 
 #ui select variables (cluster)
-output$clu_vari = renderUI({
+output$clu_vari_out = renderUI({
   selectInput( ##type(list) length
     'clu_vari',
     h5('参与聚类的特征'),
-    selected = NULL,
+    selected = c(names(KM_X())),
     choices = c(names(KM_X())),
     multiple = TRUE
   )
@@ -39,10 +41,27 @@ new_KM_X<-reactive({
   }
 })
 
+#plot bool用于判断是否显示图片窗格
+plot_bool<-reactive({
+  if(length(input$clu_vari)<2 || is.null(input$clu_vari)){return(0)}
+  else if(length(input$clu_vari)==2){return(1)}
+  else{
+    if(input$to2dimension == 'no_pic'){return(0)}
+    else if(input$to2dimension == 'two'){return(1)}
+    else if(input$to2dimension == 'pca'){return(2)}
+    else if(input$to2dimension == 'tsne'){return(3)}
+    else{print("wrong in plot bool")}
+    
+  }
+})
 
+#用来测试变量 之后需删掉
+output$test = renderUI({
+  HTML(plot_bool())
+})
 #ui select variables (plot)
 output$condi_plot = renderUI({
-  conditionalPanel(condition="input.clu_vari.length == 2",
+  conditionalPanel(condition= plot_bool(),  #  "input.clu_vari.length == 2",#
                    h4('PLOT:'),
                    plotOutput('KM_plot')
   )
@@ -59,16 +78,38 @@ KM_clusters <- function(){
   return(text)
 }
 
+#建立降维后的数据集 isolate避免一上传数据就运行
+
+
 #生成图片plot 疑问点：是否应该加入条件判断 
 output$KM_plot<-renderPlot({
   palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
             "#FF7F00", "#FFFF33", "#A65628", "#F781BF", "#999999"))
-  
-  par()#mar = c(5.1, 4.1, 0, 1)
-  plot(new_KM_X()[1:2],
-       col = KM_clusters()$cluster,
-       pch = 20, cex = 3)
-  points(KM_clusters()$centers, pch = 4, cex = 4, lwd = 4)
+
+  if(plot_bool()==0){return(NULL)}
+  else if(plot_bool()==1){
+    par()#mar = c(5.1, 4.1, 0, 1)
+    plot(new_KM_X()[1:2],
+         col = KM_clusters()$cluster,
+         pch = 20, cex = 3)
+    points(KM_clusters()$centers, pch = 4, cex = 4, lwd = 4)
+  }
+  else if(plot_bool()==2){
+    par()#mar = c(5.1, 4.1, 0, 1)
+    pca_out<-prcomp(new_KM_X())
+    plot(pca_out$x[,1:2],
+         col = KM_clusters()$cluster,
+         pch = 20, cex = 3)
+  }
+  else if(plot_bool()==3){
+    par()#mar = c(5.1, 4.1, 0, 1)
+    tsne_out<-Rtsne(new_KM_X(),check_duplicates=FALSE)
+    plot(tsne_out$Y,
+         col = KM_clusters()$cluster,
+         pch = 20, cex = 3)
+    #points(KM_clusters()$centers, pch = 4, cex = 4, lwd = 4)
+  }
+  else{print("wrong in plot")}
 })
 
 #output datatable

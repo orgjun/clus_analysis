@@ -6,7 +6,7 @@ pageWithSidebar(
                 selected=names(iris)[[2]]),
     numericInput('clusters', 'Cluster count', 3,
                  min = 1, max = 9),
-    conditionalPanel(condition="input.clusters == 3",
+    conditionalPanel(condition="input.clusters == 2",
                      selectInput(
                        "breaks", "Breaks",
                        c("Sturges",
