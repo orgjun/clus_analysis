@@ -1,0 +1,1 @@
+This is a file which is used to explain how hierarchical clustering works.

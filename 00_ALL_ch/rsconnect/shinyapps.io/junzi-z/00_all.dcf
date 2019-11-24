@@ -1,0 +1,12 @@
+name: 00_all
+title:
+username:
+account: junzi-z
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1492360
+bundleId: 2602817
+url: https://junzi-z.shinyapps.io/00_all/
+when: 1574225911.61963
+asMultiple: FALSE
+asStatic: FALSE

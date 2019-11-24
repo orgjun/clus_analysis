@@ -20,7 +20,7 @@ HC_X<-reactive({
 output$clu_v_HC_out = renderUI({
   selectInput( ##type(list) length
     'clu_vari_HC',
-    h5('参与聚类的特征'),
+    h5('features'),
     selected = c(names(HC_X())),
     choices = c(names(HC_X())),
     multiple = TRUE
@@ -41,29 +41,6 @@ new_HC_X<-function(){
     return(new_inFile[input$clu_vari_HC])
   }
 }
-
-#plot bool用于判断是否显示图片窗格
-# plot_bool<-reactive({
-  # if(length(input$clu_vari_HC)<2 || is.null(input$clu_vari_HC)){return(0)}
-  # else if(length(input$clu_vari_HC)==2){return(1)}
-  # else{
-    # if(input$to2dimension == 'no_pic'){return(0)}
-    # else if(input$to2dimension == 'two'){return(1)}
-    # else if(input$to2dimension == 'pca'){return(2)}
-    # else if(input$to2dimension == 'tsne'){return(3)}
-    # else{print("wrong in plot bool")}
-    
-  # }
-# })
-
-
-#ui select variables (plot)
-# output$condi_plot = renderUI({
-  # conditionalPanel(condition= plot_bool(),  #  "input.clu_vari_HC.length == 2",#
-                   # h4('PLOT:'),
-                   # plotOutput('KM_plot')
-  # )
-# })
 
 
 
@@ -86,10 +63,9 @@ HC_clusters_result <- reactive({
 #  return(clusters)
 })
 
-#建立降维后的数据集 isolate避免一上传数据就运行
 
 
-#生成图片plot 疑问点：是否应该加入条件判断 
+#plot
 output$plot_HC<-renderPlot({
   fviz_dend(HC_clusters(), k = input$HC_clusternumber, 
 #          cex = 0.5, 
@@ -108,11 +84,11 @@ output$HC_results<-renderPrint({
   if (is.data.frame(new_HC_X()))
   {tryCatch({HC_clusters_result()},
             error = function(e){HTML("Error in your data!")})}
-  else{return("No outputs!")}#或可改成无实验组X
+  else{return("No outputs!")}
   
 })
 
-#下载文件
+#download file
 output$HC_download <- downloadHandler(
   filename = function() { 
     'result.txt' 
