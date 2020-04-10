@@ -51,6 +51,7 @@ plot_bool<-reactive({
     else if(input$to2dimension == 'two'){return(1)}
     else if(input$to2dimension == 'pca'){return(2)}
     else if(input$to2dimension == 'tsne'){return(3)}
+    else if(input$to2dimension == 'umap'){return(4)}
     else{print("wrong in plot bool")}
     
   }
@@ -106,6 +107,14 @@ output$KM_plot<-renderPlot({
     par()#mar = c(5.1, 4.1, 0, 1)
     tsne_out<-Rtsne(new_KM_X(),check_duplicates=FALSE)
     plot(tsne_out$Y,
+         col = KM_clusters()$cluster,
+         pch = 20, cex = 3)
+    #points(KM_clusters()$centers, pch = 4, cex = 4, lwd = 4)
+  }
+  else if(plot_bool()==4){
+    par()#mar = c(5.1, 4.1, 0, 1)
+    umap_out<-umap(new_KM_X())
+    plot(umap_out$layout,
          col = KM_clusters()$cluster,
          pch = 20, cex = 3)
     #points(KM_clusters()$centers, pch = 4, cex = 4, lwd = 4)

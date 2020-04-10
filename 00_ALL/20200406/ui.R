@@ -45,19 +45,14 @@ shinyUI(
                condition = "input.explain_on_off",
              HTML(
                "    
-<p>You can calculate the number of clusters to create by using this application.</p>
-
-<h4><b> 1. What you can do on this page  </b></h4>
-<ul>
-<li> To determine the best 'k' for k-means clustering algorithm by the gap statistic
+<h4><b>Functionalities</b></h4>
+<p><b>Determine the best 'k' for k-means clustering algorithm by the gap statistic</b></p>
+<ul> 
+<li>Use the sample data or upload your data from CSV files.
+<li> Draw the plot of the gap statistic.The intersection of the blue dotted line and horizontal axis (X-axis) indicates the best 'k'.
+<li> Display the input data and calculate the gap statistic.
 </ul>
 
-<h4><b> 2. About your data </b></h4>
-
-<ul>
-<li>Your data should be numeric vectors.
-<li>The values in the first row of your data should be feature names. Each row is a sample to be clustered.
-</ul> 
 
 <i><h4>Case Example</h4>
 We selected the first four columns of the iris data as an example of cluster analysis.
@@ -79,20 +74,14 @@ tabPanel("Kmeans Clustering",
            condition = "input.explain_on_off",
          HTML(
            "    
-<p>You can  partition your data into k classes with k-means clustering.</p>
-
-<h4><b> 1. What you can do on this page  </b></h4>
-<ul>
-<li> To partition your data into k classes with k-means clustering and visualize the results
+<h4><b>Functionalities</b></h4>
+<p><b>Partition your data into k classes with k-means clustering.</b></p>
+<ul> 
+<li> Use the sample data or upload your data from CSV files.
+<li> Choose a visualization method to draw the plot of the K-means clustering. Dots of the same color indicate that they belong to the same class.
+<li> Display the input data and visualize the results.
 </ul>
 
-<h4><b> 2. About your data </b></h4>
-
-<ul>
-<li>Your data should be numeric vectors.
-<li>The values in the first row of your data should be feature names. Each row is a sample to be clustered.
-<li>If the optimal number of clusters is not clear, we recommend that you may first use [the optimal value of K] or[Hierarchical Clustering]to determine the best value of k.
-</ul> 
 
 <i><h4>Case Example</h4>
 We selected the first four columns of the iris data as an example of cluster analysis.
@@ -115,20 +104,14 @@ tabPanel("Hierarchical Clustering",
            condition = "input.explain_on_off",
          HTML(
            "    
-<p>You can partition your data with hierarchical clustering.</p>
 
-<h4><b> 1. What you can do on this page  </b></h4>
-<ul>
-<li> To partition your data with hierarchical clustering and visualize the results
+<h4><b>Functionalities</b></h4>
+<p><b>Partition your data with hierarchical clustering.</b></p>
+<ul> 
+<li> Use the sample data or upload your data from CSV files.
+<li> Choose a visualization method to draw the plot of the K-means clustering.The sample in the dotted boxes belong to the same cluster.
+<li> Display the input data and visualize the results.
 </ul>
-
-<h4><b> 2. About your data </b></h4>
-
-<ul>
-<li>Your data should be numeric vectors.
-<li>The values in the first row of your data should be feature names. Each row is a sample to be clustered.
-<li>Please do not exceed 100 samples
-</ul> 
 
 <i><h4>Case Example</h4>
 We selected the first four columns of the iris data as an example of cluster analysis.

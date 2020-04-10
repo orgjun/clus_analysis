@@ -33,6 +33,7 @@ sidebarLayout(
       )
     )),
   mainPanel(
+    h4(tags$b("Output")),
     h4('Plot:'),
     plotOutput('plot_HC'),
 #    uiOutput('condi_plot'),

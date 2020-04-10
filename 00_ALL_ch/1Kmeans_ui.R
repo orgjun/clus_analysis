@@ -17,7 +17,8 @@ sidebarLayout(
                                 c("不生成图片"="no_pic",
                                   "取前两维向量"="two",
                                   "PCA降维"="pca",
-                                  "T-SNE降维"="tsne"))),
+                                  "T-SNE降维"="tsne",
+                                  "UMAP"="umap"))),
 #             uiOutput('plot_x'),
 #             uiOutput('plot_y'),
 
